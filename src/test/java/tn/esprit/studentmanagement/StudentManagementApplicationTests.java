@@ -8,6 +8,7 @@ class StudentManagementApplicationTests {
 
     @Test
     void contextLoads() {
+        assertNotNull(context, "Le contexte de l'application ne devrait pas être nul");
     }
 
 }
