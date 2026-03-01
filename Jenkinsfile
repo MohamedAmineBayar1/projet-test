@@ -3,8 +3,8 @@ pipeline {
     
     // Définition des outils (assurez-vous qu'ils sont configurés dans Jenkins)
     tools {
-        maven 'Maven 3'
-        jdk 'JDK 17'
+        maven 'maven'
+        jdk 'JAVA_21'
     }
 
     environment {
