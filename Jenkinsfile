@@ -46,6 +46,13 @@ pipeline {
                echo " Getting Project from Git " ;
             }
         }
+        
+        stage('MVN SONARQUBE') {
+    steps {
+        // Exécution de l'analyse SonarQube avec Maven
+        // Remplacez <votre_token> par le token généré dans l'interface SonarQube
+        sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=2001" 
+    }
 
         stage('Docker Push') {
             steps {
