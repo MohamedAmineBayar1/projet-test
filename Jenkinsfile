@@ -48,11 +48,15 @@ pipeline {
         }
         
         stage('MVN SONARQUBE') {
-    steps {
-        // Exécution de l'analyse SonarQube avec Maven
-        // Remplacez <votre_token> par le token généré dans l'interface SonarQube
-        sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=2001" 
-    }}
+   steps {
+        // La commande mvn sonar:sonar déclenche l'analyse et la création du projet
+        sh "mvn sonar:sonar \
+            -Dsonar.projectKey=student-management \
+            -Dsonar.host.url=http://192.168.33.10:9001 \
+            -Dsonar.login=admin \
+            -Dsonar.password=2001" 
+    }
+        }
 
         stage('Docker Push') {
             steps {
