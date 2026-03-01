@@ -54,7 +54,7 @@ pipeline {
             -Dsonar.projectKey=student-management \
             -Dsonar.host.url=http://192.168.33.10:9001 \
             -Dsonar.login=admin \
-            -Dsonar.password=2001" 
+            -Dsonar.password=4edaa1f704ba197d4f8a4d1d661adb5d067f5739" 
     }
         }
 
