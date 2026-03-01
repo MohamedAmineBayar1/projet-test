@@ -41,6 +41,11 @@ pipeline {
                 sh "docker tag ${DOCKERHUB_USER}/${APP_NAME}:${env.BUILD_NUMBER} ${DOCKERHUB_USER}/${APP_NAME}:latest"
             }
         }
+        stage('GIT') {
+            steps {
+               echo " Getting Project from Git " ;
+            }
+        }
 
         stage('Docker Push') {
             steps {
