@@ -70,5 +70,24 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Analysis') {
+            steps {
+                // 'Sonar-Server' est le nom configuré dans System Configuration
+                withSonarQubeEnv('Sonar-Server') {
+                    sh 'mvn sonar:sonar \
+                        -Dsonar.projectKey=student-management \
+                        -Dsonar.projectName="Student Management" \
+                        -Dsonar.java.binaries=target/classes'
+                }
+            }
+        }
+
+        stage('Deploy to K8s') {
+            steps {
+                // Utilisation de kubectl avec la config qu'on a réparée ensemble
+                sh 'kubectl apply -f k8s/deployment.yaml -n devops'
+                sh 'kubectl apply -f k8s/service.yaml -n devops'
+            }
+        }
     }
 }
